@@ -1,0 +1,534 @@
+/* ===== GLOBAL ========================================================= */
+:root {
+  --bg-main: #050505;
+  --bg-alt: #0b0b0b;
+  --card-bg: #101010;
+  --card-border: #1f1f1f;
+  --text-main: #f5f5f5;
+  --text-muted: #a0a0a0;
+  --accent-main: #ffffff;
+  --radius-card: 18px;
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.7);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: radial-gradient(circle at top, #151515 0, var(--bg-main) 55%, #000000 100%);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.page-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+/* ===== PARALLAX BACKGROUND LAYERS ==================================== */
+
+.parallax-wrap {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.parallax-circle {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 60%);
+  top: -140px;
+  left: -100px;
+}
+
+.parallax-circle.small {
+  width: 260px;
+  height: 260px;
+  top: 55%;
+  right: -70px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 60%);
+}
+
+/* ===== NAVBAR ========================================================= */
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+}
+
+.nav-logo {
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.86rem;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: background 0.15s ease-out, border-color 0.15s ease-out, color 0.15s ease-out;
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+  border-color: #2b2b2b;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.nav-link.active {
+  color: var(--text-main);
+  border-color: #3b3b3b;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ===== HERO =========================================================== */
+
+.hero {
+  position: relative;
+  text-align: center;
+  padding-bottom: 2.4rem;
+}
+
+.hero::before {
+  content: "ZULKIFL";
+  position: absolute;
+  inset: auto 0 -0.9rem 0;
+  font-size: clamp(4.4rem, 13vw, 6.2rem);
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.02);
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.hero-main {
+  font-size: clamp(3.1rem, 9vw, 4.5rem);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-main);
+}
+
+.hero-sub {
+  font-size: 0.96rem;
+  color: var(--text-muted);
+  max-width: 470px;
+  margin: 0.9rem auto 1.7rem;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+
+.btn-primary,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2.3rem;
+  border-radius: 999px;
+  border: 1px solid #333333;
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.15s ease-out;
+}
+
+.btn-primary {
+  background: #f5f5f5;
+  color: #000000;
+  border-color: #f5f5f5;
+}
+
+.btn-primary:hover {
+  background: #ffffff;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.8);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-main);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: #3a3a3a;
+  transform: translateY(-1px);
+}
+
+/* ===== LAYOUT (HOME) ================================================== */
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr);
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== ABOUT CARD ===================================================== */
+
+.about-card {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--card-border);
+  padding: 1.8rem 1.7rem 1.7rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.about-header {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .about-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Avatar (bigger) */
+
+.avatar-wrap {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .avatar-wrap {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+.avatar-circle-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 60%);
+  transform: translate(14px, 14px);
+}
+
+.avatar-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.about-title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.about-title span {
+  color: var(--text-main);
+}
+
+.about-text {
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 1.7rem;
+}
+
+.contact-list {
+  display: grid;
+  gap: 0.45rem;
+  font-size: 0.92rem;
+}
+
+.contact-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-muted);
+}
+
+.contact-label {
+  font-weight: 500;
+  color: #d0d0d0;
+  min-width: 70px;
+}
+
+.contact-link {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+/* ===== RIGHT COLUMN (HOME) =========================================== */
+
+.right-column {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 1.4rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--card-border);
+  padding: 1.5rem 1.6rem 1.6rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.card-header-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.23rem 1rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  color: #d7d7d7;
+  margin-bottom: 1.1rem;
+}
+
+.experience-list {
+  display: grid;
+  gap: 1.1rem;
+  font-size: 0.9rem;
+}
+
+.exp-item {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 2.1fr);
+  gap: 0.3rem 1.1rem;
+}
+
+@media (max-width: 700px) {
+  .exp-item {
+    grid-template-columns: 1fr;
+  }
+}
+
+.exp-date {
+  color: #c0c0c0;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.exp-role {
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.exp-detail {
+  color: var(--text-muted);
+  font-size: 0.87rem;
+  line-height: 1.6;
+}
+
+.two-column-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 1.2rem;
+}
+
+@media (max-width: 700px) {
+  .two-column-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.education-item {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.education-item strong {
+  display: block;
+  color: var(--text-main);
+  margin-bottom: 0.15rem;
+}
+
+.education-dates {
+  color: #c0c0c0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.15rem;
+}
+
+.skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.1rem;
+}
+
+.skill-pill {
+  padding: 0.3rem 0.78rem;
+  border-radius: 999px;
+  border: 1px solid #2b2b2b;
+  background: #151515;
+  color: #e0e0e0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.skill-pill.alt {
+  background: #0d0d0d;
+  color: #c0c0c0;
+}
+
+/* ===== PROJECTS PAGE ================================================== */
+
+.page-header {
+  text-align: center;
+  padding-bottom: 1.5rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: 0.5rem;
+}
+
+.page-title span {
+  color: var(--text-main);
+}
+
+.page-description {
+  max-width: 520px;
+  margin: 0 auto;
+  font-size: 0.94rem;
+  color: var(--text-muted);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.4rem;
+}
+
+.entry-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--card-border);
+  padding: 1.3rem 1.3rem 1.35rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.entry-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  color: #d0d0d0;
+  margin-bottom: 0.6rem;
+}
+
+.entry-card.note .entry-tag {
+  background: #0d0d0d;
+}
+
+.entry-title {
+  font-size: 1.02rem;
+  margin-bottom: 0.3rem;
+}
+
+.entry-body {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.entry-meta {
+  font-size: 0.8rem;
+  color: #c0c0c0;
+}
+/* ===== PROJECT / NOTE IMAGES INSIDE CARDS ============================ */
+
+/* Cover image at the top of each project card */
+.entry-image {
+  display: block;                /* removes small gap under the image */
+  width: 100%;                   /* never wider than the card */
+  max-width: 100%;
+  height: auto;                  /* keep correct aspect ratio */
+  max-height: min(420px, 70vh);  /* prevent it from becoming too tall */
+  object-fit: contain;           /* show the whole screenshot, no cropping */
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  margin-bottom: 0.7rem;
+}
+
+/* Any extra screenshots inside the same project card (optional) */
+.entry-card img {
+  max-width: 100%;
+  height: auto;
+}
+/* ===== FOOTER ========================================================= */
+
+.footer-note {
+  margin-top: 2.4rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: #707070;
+}

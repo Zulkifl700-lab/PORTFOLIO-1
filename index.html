@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Zulkifl – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- PARALLAX BACKGROUND LAYERS -->
+  <div class="parallax-wrap">
+    <div class="parallax-circle" data-parallax="0.25"></div>
+    <div class="parallax-circle small" data-parallax="-0.10"></div>
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- NAVBAR -->
+    <nav class="nav">
+      <div class="nav-logo">ZULKIFL</div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="projects.html" class="nav-link">Projects &amp; Notes</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+      <h1 class="hero-main">ZULKIFL</h1>
+      <p class="hero-sub">
+        21‑year‑old tech and AI enthusiast with 3 years of hands‑on experience in computers,
+        Windows, and AI‑driven creation.
+      </p>
+      <div class="hero-actions">
+        <a href="projects.html" class="btn-primary">View Projects</a>
+        <a href="#about" class="btn-ghost">About Me</a>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+      <!-- ABOUT ME -->
+      <section id="about" class="about-card" aria-label="About Zulkifl">
+        <div class="about-header">
+          <div class="avatar-wrap">
+            <div class="avatar-circle-bg"></div>
+            <!-- Your portrait image -->
+            <img src="images/zulkifl.jpg" alt="Portrait of Zulkifl" class="avatar-img">
+          </div>
+          <div>
+            <div class="about-title">About <span>Me</span></div>
+          </div>
+        </div>
+
+        <p class="about-text">
+          I am a 21‑year‑old boy with 3 years of experience (since 2022) working with computers,
+          Windows, and AI tools for creation. I enjoy exploring new technology, solving everyday
+          tech problems, and using AI to turn ideas into clear and useful results. I keep learning,
+          improving my skills, and helping people get the best out of their devices and digital tools.
+        </p>
+
+        <div class="contact-list">
+          <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <a href="mailto:zulkaifalmuhammad@gmail.com" class="contact-link">
+              zulkaifalmuhammad@gmail.com
+            </a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Contact</span>
+            <a href="tel:+923018798181" class="contact-link">
+              +92&nbsp;301&nbsp;8798181
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN -->
+      <div class="right-column">
+        <!-- EXPERIENCE -->
+        <section class="card" aria-label="Experience">
+          <div class="card-header-pill">Experience</div>
+          <div class="experience-list">
+            <div class="exp-item">
+              <div class="exp-date">02/2022 – 12/2022</div>
+              <div>
+                <div class="exp-role">Computer &amp; Windows Support</div>
+                <p class="exp-detail">
+                  Helped friends and local users set up computers, reinstall and configure Windows,
+                  back up data, and keep systems running smoothly.
+                </p>
+              </div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-date">01/2023 – 12/2023</div>
+              <div>
+                <div class="exp-role">AI Tools for Daily Work</div>
+                <p class="exp-detail">
+                  Used AI tools to create ideas, organize information, draft content, and speed up
+                  everyday tasks for myself and others.
+                </p>
+              </div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-date">01/2024 – Now</div>
+              <div>
+                <div class="exp-role">Freelance Tech &amp; AI Help</div>
+                <p class="exp-detail">
+                  Supporting people online with choosing the right tools, solving PC issues, and
+                  building simple AI‑powered workflows that save time.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- EDUCATION & SKILLS -->
+        <section class="two-column-grid" aria-label="Education and Skills">
+          <!-- EDUCATION -->
+          <div class="card">
+            <div class="card-header-pill">Education</div>
+            <div class="education-item">
+              <div class="education-dates">2022 – Present</div>
+              <strong>Self‑Learning in Tech &amp; AI</strong>
+              Learning through online courses, tutorials, and hands‑on projects focused on
+              computers, Windows, and AI tools.
+            </div>
+          </div>
+
+          <!-- SKILLS -->
+          <div class="card">
+            <div class="card-header-pill">Skills</div>
+            <div class="skills-wrap">
+              <span class="skill-pill">Computer &amp; Windows</span>
+              <span class="skill-pill alt">AI Tools &amp; Automation</span>
+              <span class="skill-pill">Basic Troubleshooting</span>
+              <span class="skill-pill alt">PC Optimization</span>
+              <span class="skill-pill">Content &amp; Idea Creation</span>
+              <span class="skill-pill alt">Tech Guidance</span>
+              <span class="skill-pill">Continuous Learning</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer-note">
+      © <span id="year"></span> Zulkifl. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      // Footer year
+      var yearSpan = document.getElementById('year');
+      if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+      // Simple parallax on background circles
+      var layers = document.querySelectorAll('[data-parallax]');
+      function updateParallax() {
+        var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+        layers.forEach(function (el) {
+          var speed = parseFloat(el.dataset.parallax) || 0.3;
+          el.style.transform = 'translate3d(0,' + (scrolled * speed) + 'px,0)';
+        });
+      }
+      if (layers.length) {
+        window.addEventListener('scroll', updateParallax, { passive: true });
+        updateParallax();
+      }
+    })();
+  </script>
+</body>
+</html>

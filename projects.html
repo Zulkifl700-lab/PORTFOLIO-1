@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Zulkifl – Projects & Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- PARALLAX BACKGROUND LAYERS -->
+  <div class="parallax-wrap">
+    <div class="parallax-circle" data-parallax="0.25"></div>
+    <div class="parallax-circle small" data-parallax="-0.10"></div>
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- NAVBAR -->
+    <nav class="nav">
+      <div class="nav-logo">ZULKIFL</div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="projects.html" class="nav-link active">Projects &amp; Notes</a>
+      </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+      <h1 class="page-title"><span>Projects</span> &amp; Notes</h1>
+      <p class="page-description">
+        A collection of my projects, experiments, tutorials, and notes. Edit this page in VS Code
+        any time to add new entries and keep your work updated.
+      </p>
+    </header>
+
+    <!-- PROJECTS GRID -->
+    <main class="projects-grid">
+
+      <!-- Example project card -->
+      <article class="entry-card">
+  <!-- COVER IMAGE FOR THE PROJECT -->
+  <img src="images/projects/virtual-disk-windows11.jpg"
+       alt="Windows 11 Storage settings and Disks & volumes used to create a virtual hard disk"
+       class="entry-image">
+
+  <!-- TYPE TAG -->
+  <div class="entry-tag">Project</div>
+
+  <!-- TITLE -->
+  <h2 class="entry-title">Create a Virtual Hard Disk (VHD/VHDX) in Windows 11</h2>
+
+  <!-- SHORT DESCRIPTION / PREVIEW TEXT -->
+  <p class="entry-body">
+    Step‑by‑step tutorial showing how to create, initialize, and format a
+    virtual hard disk in Windows 11 using the built‑in Storage settings—
+    no third‑party tools required.
+  </p>
+
+  <!-- FULL TUTORIAL CONTENT -->
+  <section class="project-steps">
+    <h3>Step 1 – Open Storage settings</h3>
+    <img src="images/projects/vhd-step1-storage.png"
+         alt="Windows 11 Settings with System and Storage options highlighted">
+    <p>
+      Press <strong>Win + I</strong> to open <strong>Settings</strong>.
+      In the left sidebar, click <strong>System</strong>, then on the right
+      click <strong>Storage</strong>.
+    </p>
+
+    <h3>Step 2 – Open Advanced storage settings</h3>
+    <img src="images/projects/vhd-step2-advanced-storage.png"
+         alt="Storage page with Advanced storage settings option highlighted">
+    <p>
+      On the <strong>Storage</strong> page, scroll down to the
+      <strong>Storage management</strong> section and click
+      <strong>Advanced storage settings</strong>.
+    </p>
+
+    <h3>Step 3 – Go to Disks &amp; volumes</h3>
+    <img src="images/projects/vhd-step3-disks-volumes.png"
+         alt="Advanced storage settings with Disks and volumes option highlighted">
+    <p>
+      From the expanded options, choose <strong>Disks &amp; volumes</strong>
+      to open the disk management view.
+    </p>
+
+    <h3>Step 4 – Start creating the virtual disk</h3>
+    <img src="images/projects/vhd-step4-create-vhd.png"
+         alt="Disks and volumes page with the Create VHD button highlighted">
+    <p>
+      On the <strong>Disks &amp; volumes</strong> page, find
+      <strong>Create a virtual hard disk (VHD)</strong> and click
+      the <strong>Create VHD</strong> button.
+    </p>
+
+    <h3>Step 5 – Configure the virtual hard disk</h3>
+    <img src="images/projects/vhd-step5-config-vhd.png"
+         alt="Create and attach virtual hard disk dialog with name, size and Create button highlighted">
+    <p>
+      In the <strong>Create and attach virtual hard disk</strong> window,
+      enter a <strong>Virtual hard disk name</strong>, optionally change the
+      <strong>Location</strong> with <strong>Browse</strong>, and set the
+      <strong>Virtual hard disk size</strong>. Leave <strong>VHDX</strong>
+      and <strong>Dynamically expanding</strong> selected, then click
+      <strong>Create</strong>.
+    </p>
+
+    <h3>Step 6 – Initialize the new disk</h3>
+    <img src="images/projects/vhd-step6-initialize-disk.png"
+         alt="Initialize Disk dialog with GPT selected and Initialize button highlighted">
+    <p>
+      When the <strong>Initialize Disk</strong> dialog appears, select
+      <strong>GPT (GUID Partition Table)</strong> (recommended) and click
+      <strong>Initialize</strong>. Use <strong>MBR</strong> only if you
+      need legacy compatibility.
+    </p>
+
+    <h3>Step 7 – Create and format a new volume</h3>
+    <img src="images/projects/vhd-step7-new-volume.png"
+         alt="New Volume dialog showing label, drive letter and Format button">
+    <p>
+      In the <strong>New Volume</strong> window, set a <strong>Label</strong>,
+      choose a free <strong>Drive Letter</strong>, keep the file system as
+      <strong>NTFS</strong>, and leave the <strong>Size</strong> as is to use
+      the full disk. Click <strong>Format</strong>. The new virtual drive now
+      appears in <strong>File Explorer</strong>.
+    </p>
+  </section>
+</article>
+
+      <!-- Add more <article> cards below this line whenever you want -->
+
+    </main>
+
+    <footer class="footer-note">
+      © <span id="year"></span> Zulkifl. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      // Footer year
+      var yearSpan = document.getElementById('year');
+      if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+      // Simple parallax on background circles
+      var layers = document.querySelectorAll('[data-parallax]');
+      function updateParallax() {
+        var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+        layers.forEach(function (el) {
+          var speed = parseFloat(el.dataset.parallax) || 0.3;
+          el.style.transform = 'translate3d(0,' + (scrolled * speed) + 'px,0)';
+        });
+      }
+      if (layers.length) {
+        window.addEventListener('scroll', updateParallax, { passive: true });
+        updateParallax();
+      }
+    })();
+  </script>
+</body>
+</html>
